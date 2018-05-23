@@ -64,19 +64,33 @@ $completion->set_module_viewed($cm);
 
 // Print the page header.
 $PAGE->set_url('/mod/multipage/view.php', array('id' => $cm->id));
-$PAGE->set_title(format_string($multipage->name));
-$PAGE->set_heading(format_string($course->fullname));
+//$PAGE->set_title(format_string($multipage->name));		//MODIF WEEK 2
+//$PAGE->set_heading(format_string($course->fullname));		//MODIF WEEK 2
 
 // Output starts here.
-echo $OUTPUT->header();
+//echo $OUTPUT->header();									//MODIF WEEK 2
+
+$renderer = $PAGE->get_renderer('mod_multipage');			// ajout week 2
+echo $renderer->header($multipage->name, $course->fullname);// ajout week 2
     
-// Output the introduction as the first page
+// Output the introduction as the first page MODIF WEEK 2 TASK 1
+//if ($multipage->intro) {
+    //echo $OUTPUT->box(format_module_intro('multipage', $multipage, $cm->id), 'generalbox mod_introbox', 'multipageintro');
+	//echo $renderer->fetch_intro($multipage, $cm->id);
+//}
+
+// Output the introduction as the first page MODIF WEEK 2 TASK 2
 if ($multipage->intro) {
-    echo $OUTPUT->box(format_module_intro('multipage', $multipage, $cm->id), 'generalbox mod_introbox', 'multipageintro');
+    echo $renderer->fetch_intro($multipage, $cm->id);
+}
+//if we are teacher we see links. MODIF WEEK 2 TASK 2
+if(has_capability('mod/multipage:manage', 
+        $modulecontext)) {
+    echo $renderer->fetch_editing_links();
 }
 
-// Replace the following lines with your own code.
-echo $OUTPUT->heading('Yay! It works!');
+// Replace the following lines with your own code. MODIF WEEK 2 TASK 1
+// echo $OUTPUT->heading('Yay! It works!');
 
 // Finish the page.
 echo $OUTPUT->footer();

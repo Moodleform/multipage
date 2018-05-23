@@ -59,7 +59,6 @@ $capabilities = array(
         ),
         'clonepermissionsfrom' => 'moodle/course:manageactivities'
     ),
-
     'mod/multipage:view' => array(
         'captype' => 'read',
         'contextlevel' => CONTEXT_MODULE,
@@ -68,5 +67,15 @@ $capabilities = array(
             'user' => CAP_ALLOW,
             'student' => CAP_ALLOW
         )
-    )
-);
+    ),
+	'mod/multipage:manage' => array (
+        'riskbitmask' => RISK_XSS,
+        'captype' => 'write',
+        'contextlevel' => CONTEXT_MODULE,
+        'archetypes' => array (
+            'editingteacher' => CAP_ALLOW,
+            'manager' => CAP_ALLOW
+        ),
+        'clonepermissionsfrom' => 'moodle/course:manageactivities'   
+    ) 
+l);

@@ -12,39 +12,31 @@
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
-
+// along with Moodle.  If not, see <http://www.gnu.org/licenses/>;.
 /**
- * Defines the view event.
+ * Page utilities for multipage
  *
  * @package    mod_multipage
- * @copyright  2016 Richard Jones <richardnz@outlook.com>
+ * @copyright  Richard Jones https://richardnz.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- * @see https://github.com/moodlehq/moodle-mod_newmodule
- *
  */
-
-namespace mod_multipage\event;
-
+namespace mod_multipage\local;
 defined('MOODLE_INTERNAL') || die();
-
 /**
- * The mod_multipage instance viewed event class
- *
- * If the view mode needs to be stored as well, you may need to
- * override methods get_url() and get_legacy_log_data(), too.
+ * Utility class for counting pages and so on
  *
  * @package    mod_multipage
- * @copyright  2016 Your Name <your@email.address>
+ * @copyright  2018 Richard Jones https://richardnz.net
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class course_module_viewed extends \core\event\course_module_viewed {
-
-    /**
-     * Initialize the event
+class pages  {
+    /** 
+     * Count the number of pages in a multipage mod
+     *
+     * @param int $multipageid the id of a simplelesson
+     * @return int the number of pages in the database that lesson has
      */
-    protected function init() {
-        $this->data['objecttable'] = 'multipage';
-        parent::init();
+    public static function count_pages($multipageid) {      
+        return 0;
     }
 }
